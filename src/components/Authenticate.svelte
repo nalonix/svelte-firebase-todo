@@ -1,14 +1,32 @@
 <script>
+    import {authHandlers} from "../store/store.js";
+
     let email = '';
     let password = '';
     let confirmPass = '';
     let error = false;
     let register = false;
+    let authenticating = false;
 
-    function handleAuthenticate(){
+    async function handleAuthenticate(){
+        if(authenticating){
+            return;
+        }
+
         if(!email || !password || !register && !confirmPass){
             error = true;
             return;
+        }
+        authenticating = true;
+        try {
+            if (!register) {
+                await authHandlers.login(email, password);
+            } else {
+                await authHandlers.signup(email, password);
+            }
+        } catch (e) {
+            console.log("There was an auth error", e)
+            error = true;
         }
 
     }
@@ -39,8 +57,12 @@
                 <input bind:value={confirmPass} type="password" name="confirmation" placeholder="Confirm Password" id="confirm">
             </label>
             {/if}
-        <button type="submit">
-            Submit
+        <button type="submit" on:click={handleAuthenticate}>
+            {#if authenticating}
+                <i class="fa-solid fa-spinner loadingSpinner"></i>
+                {:else}
+                Submit
+                {/if}
         </button>
     </form>
     <div class="options">
