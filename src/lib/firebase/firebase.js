@@ -7,12 +7,12 @@ import {getAuth} from 'firebase/auth'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: import.meta.env.VITE_APIKEY,
-    authDomain: import.meta.env.VITE_AUTH_DOMAIN,
-    projectId: import.meta.env.VITE_PROJECT_ID,
-    storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
-    messagingSenderId: import.meta.env.vITE_MESSAGING_SENDER_ID,
-    appId: import.meta.env.VITE_APP_ID
+    apiKey: AIzaSyCR3uHo2tsRHg4Yb5OwHjXgWz17PXyp03s,
+    authDomain: svelte-crud-ffb46.firebaseapp.com,
+    projectId: svelte-crud-ffb46,
+    storageBucket: svelte-crud-ffb46.appspot.com,
+    messagingSenderId: 851428174314,
+    appId: 1:851428174314:web:3e60cf25df16ebbe51aa93
 };
 
 // Initialize Firebase
